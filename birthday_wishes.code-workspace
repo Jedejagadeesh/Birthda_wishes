@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Pictures"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "birthday_wishes"
+	}
+}
