@@ -1,104 +1,92 @@
 * {margin:0; padding:0; box-sizing:border-box;}
 
 body {
-  background: radial-gradient(circle at bottom, #1b0026, #000);
-  font-family:'Poppins', sans-serif;
-  overflow:hidden;
-  height:100vh;
-  text-align:center;
-  color:#fff;
+  background: radial-gradient(circle at bottom, #020024, #090979, #000);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .screen {
-  position:absolute;
-  width:100%;
-  height:100%;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
-.screen.active {display:flex;}
+.screen.active { display: flex; }
 
 h1 {
-  font-size:3em;
-  background: linear-gradient(90deg, #ff33cc, #ff66ff, #ffccff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow: 0 0 15px #ff33cc, 0 0 35px #ff66ff, 0 0 60px #ffccff;
-  margin-bottom:25px;
-  letter-spacing:2px;
-  animation: glowPulse 2s infinite alternate;
-}
-
-h2 {
-  font-size:2em;
-  background: linear-gradient(90deg, #ff99ff, #ff66cc, #ff3399);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow: 0 0 15px #ff66cc, 0 0 35px #ff33ff, 0 0 50px #ff99ff;
-  margin-bottom:15px;
-  letter-spacing:1.5px;
-  animation: glowPulse 3s infinite alternate;
-}
-
-p {
-  font-size:1.3em;
-  color:#ffe6ff;
-  text-shadow:0 0 15px #ff99ff;
-  line-height:1.6;
-  max-width:800px;
-  margin:10px auto 0 auto;
+  font-size: 3em;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 0 15px #00c8ff, 0 0 35px #00ffee, 0 0 60px #00aaff;
 }
 
 button {
-  background: linear-gradient(90deg, #ff0099, #ff66ff, #ff99ff);
-  border:none;
-  padding:15px 45px;
-  font-size:1.3em;
-  border-radius:50px;
-  color:#fff;
-  box-shadow:0 0 25px #ff33cc;
-  cursor:pointer;
-  margin-top:40px;
-  opacity:0;
+  background: linear-gradient(90deg, #0077ff, #00c6ff, #7afcff);
+  border: none;
+  padding: 15px 45px;
+  font-size: 1.3em;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 40px;
+  box-shadow: 0 0 20px #00c6ff;
+  opacity: 0;
   animation: fadeIn 2s ease forwards;
   transition: transform 0.3s, box-shadow 0.3s;
-  font-weight:600;
 }
-
 button:hover {
   transform: scale(1.1);
-  box-shadow:0 0 50px #ff66ff;
+  box-shadow: 0 0 50px #00ffff;
 }
+.hidden { display: none; }
 
 .photo-container {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  gap:30px;
-  min-height:50vh; /* enough space for final text below */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
-
-.photo-container img.photo {
-  width:0;
-  height:0;
-  object-fit:cover;
-  border-radius:25px;
-  border:3px solid #ff99ff;
-  box-shadow:0 0 60px #ff33cc;
-  display:block;
-  opacity:0;
+.photo {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border-radius: 25px;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 40px #00ccff;
   transition: all 1s ease;
 }
 
+#finalWish {
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+#finalWish.visible { opacity: 1; }
+
+h2 {
+  font-size: 2em;
+  color: #aeefff;
+  text-shadow: 0 0 15px #00c8ff, 0 0 30px #00ffee;
+}
+p {
+  font-size: 1.3em;
+  color: #e6f7ff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
 canvas {
-  position:absolute;
-  top:0;
-  left:0;
-  z-index:-1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 @keyframes fadeIn {
@@ -106,19 +94,16 @@ canvas {
   to {opacity:1; transform:scale(1);}
 }
 
-@keyframes glowPulse {
-  from {text-shadow:0 0 15px #ff99ff,0 0 35px #ff33cc,0 0 60px #ff66ff;}
-  to {text-shadow:0 0 30px #ff66ff,0 0 60px #ff33cc,0 0 90px #ff99ff;}
+/* 🌸 Falling flowers animation for final scene */
+.flower {
+  position: fixed;
+  top: -50px;
+  font-size: 24px;
+  opacity: 0.9;
+  animation: fall linear forwards;
 }
 
-#finalWish {
-  margin-top:20px;
-  opacity:0;
-  transition: opacity 2s ease;
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
-
-#finalWish.visible {
-  opacity:1;
-}
-
-.hidden {display:none;}
